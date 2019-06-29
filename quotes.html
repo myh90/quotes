@@ -243,6 +243,8 @@ Error message and password prompt
 
 <li>$:/temp/search</li>
 
+<li>$:/temp/search1</li>
+
 <li>$:/theme</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -780,6 +782,8 @@ Error message and password prompt
 <li>Elizabeth Kubler-Ross</li>
 
 <li>Elpruhzlein Robyn</li>
+
+<li>Embedded Search</li>
 
 <li>Embody the most powerful ideas of the culture in the environment.</li>
 
@@ -12206,7 +12210,7 @@ See also [[Marylynne Robinson interpreting Feuerbach|Religion is a human project
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/macros/hmark/comparequote.js]]</pre>
+# [[Embedded Search]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -12298,7 +12302,7 @@ exports.run = function(author, quote) {
 <div created="20190222034946712" creator="HaggaiMark" modified="20190323135849393" modifier="HaggaiMark" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20190222040605635" creator="HaggaiMark" modified="20190629112218366" modifier="HaggaiMark" title="$:/state/tab/moresidebar-1850697562">
+<div created="20190222040605635" creator="HaggaiMark" modified="20190629133426882" modifier="HaggaiMark" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
 <div created="20190221181844003" creator="HaggaiMark" modified="20190629112216107" modifier="HaggaiMark" title="$:/state/tab/sidebar--595412856">
@@ -12316,7 +12320,7 @@ exports.run = function(author, quote) {
 <div created="20190222033238549" creator="H" modified="20190222041247414" modifier="HaggaiMark" title="$:/status/UserName">
 <pre>HaggaiMark</pre>
 </div>
-<div created="20190629112952140" creator="HaggaiMark" list="[[Searching for a quote]]" modified="20190629113007491" modifier="HaggaiMark" title="$:/StoryList">
+<div created="20190629133359334" creator="HaggaiMark" list="[[Searching for a quote]]" modified="20190629133359334" modifier="HaggaiMark" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190504153006022" creator="HaggaiMark" modified="20190504153045827" modifier="HaggaiMark" title="$:/temp/advancedsearch">
@@ -12377,6 +12381,9 @@ exports.run = function(author, quote) {
 }</pre>
 </div>
 <div created="20190222030637016" creator="HaggaiMark" modified="20190629112012775" modifier="HaggaiMark" title="$:/temp/search">
+<pre></pre>
+</div>
+<div created="20190629133352279" creator="HaggaiMark" modified="20190629133417515" modifier="HaggaiMark" title="$:/temp/search1">
 <pre></pre>
 </div>
 <div created="20190319034638492" creator="HaggaiMark" modified="20190323141241006" modifier="HaggaiMark" title="$:/theme">
@@ -13923,6 +13930,57 @@ Movies: Facing Death: Elisabeth Kubler-Ross
 <div changecount="1" created="20120831203200000" creator="HaggaiMark" modified="20190416023445383" modifier="HaggaiMark" tags="author" title="Elpruhzlein Robyn" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag{!!title}]&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20190629130953853" creator="HaggaiMark" modified="20190629131929713" modifier="HaggaiMark" tags="" title="Embedded Search">
+<pre>&lt;div class=&quot;tc-sidebar-lists&quot;&gt;
+
+&lt;$set name=&quot;searchTiddler&quot; value=&quot;$:/temp/search1&quot;&gt;
+&lt;div class=&quot;tc-search&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/search1&quot; type=&quot;search&quot; tag=&quot;input&quot; focus={{$:/config/Search/AutoFocus}} focusPopup=&lt;&lt;qualify &quot;$:/state/popup/search-dropdown&quot;&gt;&gt; class=&quot;tc-popup-handle&quot;/&gt;
+&lt;$reveal state=&quot;$:/temp/search1&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$button tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/advancedsearch&quot; text={{$:/temp/search1}}/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/search1&quot; text=&quot;&quot;/&gt;
+&lt;$action-navigate $to=&quot;$:/AdvancedSearch&quot;/&gt;
+{{$:/core/images/advanced-search-button}}
+&lt;/$button&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/search1&quot; text=&quot;&quot; /&gt;
+{{$:/core/images/close-button}}
+&lt;/$button&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/search-dropdown&quot;&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/down-arrow}}
+&lt;$list filter=&quot;[{$:/temp/search1}minlength{$:/config/Search/MinLength}limit[1]]&quot; variable=&quot;listItem&quot;&gt;
+&lt;$set name=&quot;resultCount&quot; value=&quot;&quot;&quot;&lt;$count filter=&quot;[!is[system]search{$(searchTiddler)$}]&quot;/&gt;&quot;&quot;&quot;&gt;
+
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&quot;$:/temp/search1&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
+&lt;$button to=&quot;$:/AdvancedSearch&quot; tooltip={{$:/language/Buttons/AdvancedSearch/Hint}} aria-label={{$:/language/Buttons/AdvancedSearch/Caption}} class=&quot;tc-btn-invisible&quot;&gt;
+{{$:/core/images/advanced-search-button}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+
+&lt;$reveal tag=&quot;div&quot; class=&quot;tc-block-dropdown-wrapper&quot; state=&quot;$:/temp/search1&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+
+&lt;$reveal tag=&quot;div&quot; class=&quot;tc-block-dropdown tc-search-drop-down tc-popup-handle&quot; state=&lt;&lt;qualify &quot;$:/state/popup/search-dropdown&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&gt;
+
+&lt;$list filter=&quot;[{$:/temp/search1}minlength{$:/config/Search/MinLength}limit[1]]&quot; emptyMessage=&quot;&quot;&quot;&lt;div class=&quot;tc-search-results&quot;&gt;{{$:/language/Search/Search/TooShort}}&lt;/div&gt;&quot;&quot;&quot; variable=&quot;listItem&quot;&gt;
+
+{{$:/core/ui/SearchResults}}
+
+&lt;/$list&gt;
+
+&lt;/$reveal&gt;
+
+&lt;/$reveal&gt;
+
+&lt;/$set&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div changecount="1" created="20160507170200000" creator="HaggaiMark" modified="20190316011712701" modifier="HaggaiMark" tags="quote [[Maria Montessori]] learning [[life's nature]]" title="Embody the most powerful ideas of the culture in the environment." type="text/vnd.tiddlywiki">
 <pre>Embody the most powerful ideas of the culture in the environment.</pre>
@@ -18270,7 +18328,7 @@ The creator of [[Dilbert|https://dilbert.com/]].
 
 &lt;&lt;list-links &quot;[tag{!!title}]&quot;&gt;&gt;</pre>
 </div>
-<div created="20190221184525823" creator="HaggaiMark" modified="20190629091232122" modifier="HaggaiMark" tags="" title="Searching for a quote" type="text/vnd.tiddlywiki">
+<div created="20190221184525823" creator="HaggaiMark" modified="20190629133641620" modifier="HaggaiMark" tags="" title="Searching for a quote" type="text/vnd.tiddlywiki">
 <pre>&lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;NewQuote&quot; tags=&quot;quote&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&quot;NewQuote&quot;/&gt;
@@ -18285,9 +18343,16 @@ Create New Author
 
 This quotes wiki can be searched in multiple ways, using either free text or the tags associated with each quote.
 
-!!! To search for a word appearing in a quote, use the &quot;search&quot; field on the ''top right''.
+!!! __To search for a word appearing in a quote__, use the &quot;search&quot; box at the top  of the ''right pane'', or use the search box below:
+
+{{Embedded Search}} (enter words to search)
+
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+
 !!! 
-!!! To ''list'' quotes by specific tags use the &quot;Tags&quot; tab on the right (click &quot;More&quot;, then &quot;Tags&quot;).
+!!! __To ''list'' quotes by specific tags__ use the &quot;Tags&quot; tab on the right (click &quot;More&quot;, then &quot;Tags&quot;).
 !!! 
 !!! You can also ''list by'':
 !!! 
